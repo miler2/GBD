@@ -1,0 +1,9 @@
+[mysqld]
+max_connections=250
+character_set_server=utf32
+collation_server=utf32_spanish2_ci
+default_authentication_plugin=mysql_native_password
+join_buffer_size=2M
+sort_buffer_size=2M
+read_buffer_size=2M
+read_rnd_buffer_size=2M
