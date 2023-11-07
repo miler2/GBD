@@ -1,9 +1,14 @@
 [mysqld]
-max_connections=250
-character_set_server=utf32
-collation_server=utf32_spanish2_ci
-default_authentication_plugin=mysql_native_password
-join_buffer_size=2M
-sort_buffer_size=2M
-read_buffer_size=2M
-read_rnd_buffer_size=2M
+general_log = ON
+general_log_file=/var/log/querys.log
+
+#Para el caso que estemos intentando detectar las consultas más lentas y problemáticas, podemos habilitar las consultas únicamente para este tipo:
+#long_query_time=3
+#slow_query_log=1
+#slow_query_log_file=/var/log/slow.log
+
+#long_query_time: Es la configuración que determina el umbral de tiempo en segundos que una consulta debe superar para considerarse una «consulta lenta» y ser registrada en el registro de consultas lentas, este valor se utiliza para identificar consultas que pueden estar afectando negativamente el rendimiento del servidor y que requieren atención para su optimización.
+#slow_query_log: Esta configuración habilita o deshabilita el registro de consultas lentas, cuando slow_query_log está configurado en 1 (o «ON»), significa que el registro de consultas lentas está activado y las consultas que cumplan con el umbral de tiempo definido en long_query_time serán registradas en el archivo de registro de consultas lentas.
+#slow_query_log_file Esta configuración especifica la ubicación y el nombre del archivo de registro de consultas lentas, al igual que en el caso anterior, conviene crear y asignar permiso manualmente:
+    #touch /var/log/slow.log 
+    #chown mysql:mysql /var/log/slow.log
