@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 
+echo ""
 echo "*****WARNING*****"
 echo "Antes de continuar, debe cambiar la contraseña del directorio 'scripts/.env', si no ha hecho esto, escriba 'n'."
 echo "¿Quiere continuar la instalación con la configuración actual?"
