@@ -5,3 +5,8 @@ Esta es la asignatura de gestión de base de datos, y aquí voy a documentar tod
 En esta tarea vamos a hacer la configuración de mysql y su gestión de ram.  
 
 Si quieres hacer la configuración de forma automática solo tienes que ejecutar el script configuracion.sh.
+
+## Install Dockers
+Esto nos proporciona la habilidad de descargar mysql y phpmyadmin usando docker y configurar mysql de forma automatizada.
+
+Más documentación sobre esto en el readme de install_dockers.
