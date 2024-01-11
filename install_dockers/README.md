@@ -12,7 +12,9 @@ Si te ha dado error en la última línea, intenta ejecutar el archivo de nuevo, 
 
 ## Indicaciones:
 ### Instalación
-Si es la primera vez instalando docker en esta máquina vamos a dar permisos de ejecución al archivo install_mysql_docker.sh y lo ejecutaremos. Éste archivo nos hace la instalación entera.  
+Si es la primera vez instalando docker en esta máquina vamos a dar permisos de ejecución al archivo install_mysql_docker.sh y lo ejecutaremos. Éste archivo nos hace la instalación entera.
+
+**Nota: Tendremos que ejecutar el archivo estando en el directorio "install_dockers"**
 
 Si queremos hacer la instalación de nuevo de solo uno de los dos tendremos que usar los archivos scripts/mysql.sh y scripts/phpmyadmin.sh.
 
