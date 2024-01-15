@@ -18,8 +18,8 @@
 user		= mysql
 # pid-file	= /var/run/mysqld/mysqld.pid
 # socket	= /var/run/mysqld/mysqld.sock
-port		= 3307
-# datadir	= /var/lib/mysql
+port		= 3307  #He quitado este comodin
+datadir	= /var/lib/mysql  #He quitado este comodin
 
 
 # If MySQL is running as a replication slave, this should be
@@ -28,7 +28,7 @@ port		= 3307
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address		= 127.0.0.1
+bind-address		= 0.0.0.0 #He modificado este parametro
 mysqlx-bind-address	= 127.0.0.1
 #
 # * Fine Tuning
