@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 echo ""
 echo "--------------------------------------------------------------------------------------------------------------------"
@@ -8,20 +7,15 @@ echo "Antes de continuar, debe cambiar la contraseña del directorio 'scripts/.e
 echo "¿Quiere continuar la instalación con la configuración actual?"
 read -n 1 respuesta
 
-
-
 if [ $respuesta = 's' ]; then
+    #Actualizamos nuestra máquina
     apt update -y
-    #apt upgrade -y
 
-    #Instalamos docker en nuestra máquina
-    apt install apt-transport-https ca-certificates curl software-properties-common -y
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" -y
-    apt install docker-ce -y
+    #Instalamos mysql-server y mysql-client
+    apt install mysql-server mysql-client -y
 
-    #Instalamos MySQL
-    ./scripts/mysql.sh
+    #Copiamos el archivo de configuración de mysql (por ahora hemos cambiado solo el puerto de mysql)
+    cp config/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
     #Hacemos la configuración correspondiente de mysql
     ./scripts/mysql_config.sh
