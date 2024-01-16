@@ -3,7 +3,7 @@
 echo ""
 echo "--------------------------------------------------------------------------------------------------------------------"
 echo "*****WARNING*****"
-echo "Antes de continuar, debe cambiar la contraseña del directorio 'scripts/.env', si no ha hecho esto, escriba 'n'."
+echo "Antes de continuar, debe cambiar la contraseña del directorio 'GBD/install_mysql/scripts/.env', si no ha hecho esto, escriba 'n'."
 echo "¿Quiere continuar la instalación con la configuración actual?"
 read -n 1 respuesta
 
