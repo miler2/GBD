@@ -26,35 +26,45 @@ variable "instance_type" {
 
 
 #------------------------------------------------------------------------------------
-# Grupo de seguridad
-variable "nombre_security_group" {
-  description = "Nombre del grupo de seguridad de la GBD_U6P1"
+# Grupo de seguridad para las maquinas mysql
+variable "nombre_security_group_mysql" {
+  description = "Nombre del grupo de seguridad de las maquinas mysql"
   type        = string
-  default     = "GBD_U6P1"
+  default     = "mysql"
 }
 
-variable "descripcion_security_group" {
-  description = "Descripción del grupo de seguridad de la GBD_U6P1"
+variable "descripcion_security_group_mysql" {
+  description = "Descripción del grupo de seguridad de las maquinas mysql"
   type        = string
-  default     = "Grupo de seguridad para la GBD_U6P1"
+  default     = "Grupo de seguridad para las maquinas mysql"
 }
 
-variable "puertos_security_group" {
-  description = "Puertos de entrada del grupo de seguridad de la GBD_U6P1"
+variable "puertos_security_group_mysql" {
+  description = "Puertos de entrada del grupo de seguridad de las maquinas mysql"
   type        = list(number)
   default     = [22, 3306]
 }
 
-variable "protocolo_seguridad" {
-  description = "Protocolo de seguridad para los puertos de entrada de la GBD_U6P1"
+variable "protocolo_seguridad_mysql" {
+  description = "Protocolo de seguridad para los puertos de entrada de las maquinas mysql"
   type        = string
   default     = "tcp"
 }
 
 #------------------------------------------------------------------------------------
 # Instancias
-variable "nombre_instancia" {
-  description = "Nombre de la instancia"
+#*********************************************
+# Mysql padre
+variable "nombre_instancia_mysql_padre" {
+  description = "Nombre de la instancia mysql padre"
   type        = string
-  default     = "GBD_U6P1"
+  default     = "mysql_padre"
+}
+
+#*********************************************
+# Mysql hijo
+variable "nombre_instancia_mysql_hijo" {
+  description = "Nombre de la instancia mysql hijo"
+  type        = string
+  default     = "mysql_hijo"
 }
