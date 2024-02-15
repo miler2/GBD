@@ -1,0 +1,2 @@
+# Bases de datos replicadas
+En esta actividad [(link a la practica)](https://educacionadistancia.juntadeandalucia.es/centros/almeria/mod/assign/view.php?id=411839) vamos a hacer dos máquinas y vamos a distribuir la base de datos entre las dos.
