@@ -21,9 +21,6 @@ user		= mysql
 # port		= 3306
 # datadir	= /var/lib/mysql
 
-#Eliminamos la variable secure-file-priv. Esto está activado por defecto, y no nos permite hacer la copia de seguridad a un archivo excel.
-secure-file-priv=""
-
 
 # If MySQL is running as a replication slave, this should be
 # changed. Ref https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_tmpdir
@@ -31,7 +28,7 @@ secure-file-priv=""
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address		= 0.0.0.0 #He modificado este parametro
+bind-address		= 127.0.0.1
 mysqlx-bind-address	= 127.0.0.1
 #
 # * Fine Tuning
