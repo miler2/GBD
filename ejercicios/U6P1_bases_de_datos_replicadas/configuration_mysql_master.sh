@@ -6,3 +6,5 @@ set -ex
 # Actualizamos el sistema
 apt update -y
 
+# Instalamos mysql
+apt install mysql-server -y
