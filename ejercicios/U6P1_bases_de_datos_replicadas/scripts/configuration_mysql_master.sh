@@ -44,7 +44,7 @@ systemctl restart mysql
 mysql -u root -p$password_user_root -e "FLUSH TABLES WITH READ LOCK"
 
 # Hacemos una copia de seguridad de la base de datos liga
-mysqldump -u root liga > dump.sql
+mysqldump -u root -p$password_user_root liga > dump.sql
 
 # Compartimos el archivo dump.sql con el otro ordenador (mysql_hijo)
 scp -i ~/GBD/ejercicios/U6P1_bases_de_datos_replicadas/scripts/labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
