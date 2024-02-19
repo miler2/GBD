@@ -34,7 +34,7 @@ mysql -u root -p$password_user_root -e "CREATE DATABASE $base_de_datos_no_replic
 sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 sed -i "s/# server-id		= 1/server-id		= 1/" /etc/mysql/mysql.conf.d/mysqld.cnf
 sed -i "s:# log_bin                       = /var/log/mysql/mysql-bin.log:log_bin                       = /var/log/mysql/mysql-bin.log:" /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -i "s/# binlog_do_db          = include_database_name/binlog_do_db          = $base_de_datos_no_replica/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -i "s/# binlog_do_db          = include_database_name/binlog_do_db          = liga/" /etc/mysql/mysql.conf.d/mysqld.cnf
 sed -i "s/# binlog_ignore_db      = include_database_name/binlog_ignore_db      = $base_de_datos_no_replica/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Reiniamos el servicio de mysql
