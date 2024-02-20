@@ -9,6 +9,7 @@ apt update -y
 # Instalamos mysql
 apt install mysql-server -y
 
+# Importamos las variables
 source .env
 
 # Copiamos el archivo de configuración de mysql por defecto, para luego asegurarme de que los siguientes comandos funcionen
