@@ -12,7 +12,7 @@ apt install mysql-server -y
 source .env
 
 # Modificamos los permisos del usuario root
-#mysql -u root <<< "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY '$password_user_root'"
+mysql -u root <<< "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY '$password_user_root'"
 
 # Creamos la base de datos liga (sin datos)
 mysql -u root -p$password_user_root -e "CREATE DATABASE if not exists liga"
@@ -28,3 +28,7 @@ echo "relay-log = /var/log/mysql/mysql-relay-bin.log" >> /etc/mysql/mysql.conf.d
 
 # Reiniciamos el servicio de mysql
 systemctl restart mysql
+
+# Cambiamos la configuración de la replicación de mysql
+mysql -u root -e "CHANGE REPLICATION SOURCE TO SOURCE_HOST='master',SOURCE_USER='usuario_replicacion',SOURCE_PASSWORD='contraseña',SOURCE_LOG_FILE='mysql-bin.000001',SOURCE_LOG_POS=157"
+

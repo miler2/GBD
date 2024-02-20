@@ -47,7 +47,7 @@ mysql -u root -p$password_user_root -e "FLUSH TABLES WITH READ LOCK"
 mysqldump -u root -p$password_user_root liga > dump.sql
 
 # Compartimos el archivo dump.sql con el otro ordenador (mysql_hijo)
-scp -i ~/GBD/ejercicios/U6P1_bases_de_datos_replicadas/scripts/labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
+scp -i labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
 
 # Desbloqueamos las tablas de la base de datos
-mysql -u root -e "UNLOCK TABLES"
+mysql -u root -p$password_user_root -e "UNLOCK TABLES"
