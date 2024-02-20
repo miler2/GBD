@@ -34,7 +34,7 @@ echo "relay-log = /var/log/mysql/mysql-relay-bin.log" >> /etc/mysql/mysql.conf.d
 systemctl restart mysql
 
 # Cambiamos la configuración de la replicación de mysql
-mysql -u root -p$password_user_root -e "CHANGE REPLICATION SOURCE TO SOURCE_HOST='master',SOURCE_USER='usuario_replicacion',SOURCE_PASSWORD='contraseña',SOURCE_LOG_FILE='mysql-bin.000001',SOURCE_LOG_POS=157"
+mysql -u root -p$password_user_root -e "CHANGE REPLICATION SOURCE TO SOURCE_HOST='$IP_MYSQL_PADRE',SOURCE_USER='$usuario',SOURCE_PASSWORD='$password_user_root',SOURCE_LOG_FILE='mysql-bin.000001',SOURCE_LOG_POS=157"
 
 # Arrancamos la replicacion
 mysql -u root -p$password_user_root -e "START REPLICA"
