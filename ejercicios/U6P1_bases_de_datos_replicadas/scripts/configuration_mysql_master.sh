@@ -33,9 +33,9 @@ mysql -u root -p$password_user_root -e "CREATE DATABASE $base_de_datos_no_replic
 #sed -i "s/127.0.0.1/$IP_MYSQL_HIJO/" /etc/mysql/mysql.conf.d/mysqld.cnf        # Este no me funciona con la ip de la máquina, a si que lo dejo en 0.0.0.0
 sed -i "s/127.0.0.1/0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 sed -i "s/# server-id		= 1/server-id		= 1/" /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -i "s:# log_bin                       = /var/log/mysql/mysql-bin.log:log_bin                       = /var/log/mysql/mysql-bin.log:" /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -i "s/# binlog_do_db          = include_database_name/binlog_do_db          = liga/" /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -i "s/# binlog_ignore_db      = include_database_name/binlog_ignore_db      = $base_de_datos_no_replica/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -i "s:# log_bin			= /var/log/mysql/mysql-bin.log:log_bin			= /var/log/mysql/mysql-bin.log:" /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -i "s/# binlog_do_db		= include_database_name/binlog_do_db		= liga/" /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -i "s/# binlog_ignore_db	= include_database_name/binlog_ignore_db	= $base_de_datos_no_replica/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Reiniamos el servicio de mysql
 systemctl restart mysql
@@ -47,7 +47,7 @@ mysql -u root -p$password_user_root -e "FLUSH TABLES WITH READ LOCK"
 mysqldump -u root -p$password_user_root liga > dump.sql
 
 # Compartimos el archivo dump.sql con el otro ordenador (mysql_hijo)
-scp -i labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
+#scp -i labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
 
 # Desbloqueamos las tablas de la base de datos
 mysql -u root -p$password_user_root -e "UNLOCK TABLES"
