@@ -27,6 +27,9 @@ Y también para la configuración del archivo "mysqld.cnf":
 >sed -i "s/# binlog_do_db		= include_database_name/binlog_do_db		= liga/" /etc/mysql/mysql.conf.d/mysqld.cnf  
 >sed -i "s/# binlog_ignore_db	= include_database_name/binlog_ignore_db	= $base_de_datos_no_replica/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
+El resultado de lo comentado arriba sería este archivo de configuración (se muestra solo lo que cambia en el archivo):  
+![](images/imagen1.png)
+
 Además de crear variables para poder modificar las direcciones ip una sola vez a todas las ocurrencias.
 
 Una cosa a tener en cuenta en la ejecución de este script es que es posible que la ejecución de un comando dentro de mysql tarde un poco más de lo normal, pero el script en bash siga. Esto puede causar problemas como que se haya ejecutado la creación del archivo dump.sql, y mientras se está creando, se intenta mandar al otro servidor, por lo que, o da error, o no se manda, porque aún no está creado. Esto se soluciona volviendo a ejecutar el script (o añadiendo el comando "sleep, pero me requeriría más tiempo de tarea que no me hace falta").
