@@ -9,7 +9,7 @@ https://github.com/miler2/GBD.git
 
 Aquí tengo mis tareas documentadas en github, y esta tarea está dentro del directorio GBD/ejercicios/U6P1_bases_de_datos_replicadas.
 
-## Configuración del servidor MySQL padre
+## **Configuración del servidor MySQL padre**
 Este archivo nos hace toda la configuración necesaria para nuestro servidor padre. No confirmo que ejecutando los scripts varias veces funcionen del todo bien. Pero si es la primera vez, siempre funciona.
 
 Este script sigue los pasos que nos dice en la guía, solo que lo he modificado para que se pueda hacer de forma automática. Los únicos cambios que he tenido que hacer es añadir esta línea:
@@ -34,7 +34,19 @@ Además de crear variables para poder modificar las direcciones ip una sola vez 
 
 Una cosa a tener en cuenta en la ejecución de este script es que es posible que la ejecución de un comando dentro de mysql tarde un poco más de lo normal, pero el script en bash siga. Esto puede causar problemas como que se haya ejecutado la creación del archivo dump.sql, y mientras se está creando, se intenta mandar al otro servidor, por lo que, o da error, o no se manda, porque aún no está creado. Esto se soluciona volviendo a ejecutar el script (o añadiendo el comando "sleep, pero me requeriría más tiempo de tarea que no me hace falta").
 
+Otra cosa muy importante es que en la ejecución del script para el servidor mysql hijo, se necesita ejecutar este comando "mysql -u root -e "SHOW MASTER STATUS"" en el servidor mysql padre para confirmar que son los valores predeterminados File "mysql-bin.000001" y posición "157". Esto se debe a que en este script no tengo ninguna forma de ver qué valores tienen de forma automática, por lo que si no funciona el script, se debe tener esto en cuenta también.
 
+La salida debe ser la siguiente:
+```
+  +------------------+----------+----------------------------+---------------------------+-------------------+
+  | File             | Position | Binlog_Do_DB               | Binlog_Ignore_DB          | Executed_Gtid_Set |
+  +------------------+----------+----------------------------+---------------------------+-------------------+
+  | mysql-bin.000001 | 157      | base_de_datos_replicacion  | base_de_datos_no_replica  |                   |
+  +------------------+----------+----------------------------+---------------------------+-------------------+
+  1 row in set (0.00 sec)
+```
+
+Este es el script que he usado para el servidor mysql padre:
 ```
 #!/bin/bash
 
@@ -88,3 +100,4 @@ scp -i labsuser_sad.pem dump.sql ubuntu@$IP_MYSQL_HIJO:/tmp/
 # Desbloqueamos las tablas de la base de datos
 mysql -u root -e "UNLOCK TABLES"
 ```
+
